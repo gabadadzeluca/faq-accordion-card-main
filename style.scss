@@ -8,6 +8,7 @@
     --white: #FFFFFF;
     --background:linear-gradient(180deg, #B068E9 0%, #6463E7 100%); 
     --line-color: #E8E8EA;
+    --reddish-hover: #F47B56;
 }
 
 html {
@@ -25,8 +26,9 @@ body{
 }
 
 .board{
-    width: 32.7rem;
-    height: 53.5rem;
+    width: 50%;
+    min-width: 32.7rem;
+    height: 57rem;
     background-color: var(--white);
     font-weight: var(--normal);
     box-shadow: 0px 50px 50px -20px rgba(53, 18, 122, 0.497159);
@@ -38,7 +40,11 @@ body{
         > div{
             border-bottom: 0.1rem solid var(--line-color);
         }
-        width: 27.9rem;
+        >div:hover{
+            cursor: pointer;
+        }
+        width: 70%;
+        min-width: 27.9rem;
         height: 35.5rem;
         display: flex;
         flex-direction: column;
@@ -56,7 +62,13 @@ body{
             background-image: url("images/icon-arrow-down.svg");
         }
         .arrow-up{
-            background-image: url("images/icon-arrow-up.svg");
+            background-image: url("images/icon-arrow-down.svg");
+            -moz-transform: scaleY(-1);
+            -o-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+            // filter: FlipV;
+            // -ms-filter: "FlipV";
         }
         .question{
             font-size: 1.3rem;
@@ -71,6 +83,11 @@ body{
             margin: 1.3rem 0 1.6rem 0;
             display: none;
         }
+        .question:hover, .answer:hover{
+            cursor: pointer;
+        }
+
+        
     }
     
 }
@@ -79,19 +96,62 @@ body{
     position: relative;
     bottom: 8.5rem;
     display: flex;
+    margin: 0;
     justify-content: center;
     *{
-        width: 24rem;
-        height: 14.5rem;
+        min-width: 24rem;
+        min-height: 14.5rem;
         background-repeat: no-repeat;
         background-position: center;
     }
     .img-1{
         background-image: url("images/bg-pattern-mobile.svg");
         position: absolute;
-        top: 4rem;
+        top: 4.5rem;
+        background-size: 20rem;
     }
     .img-2{
         background-image: url("images/illustration-woman-online-mobile.svg");
     }
+}
+
+
+@media screen and (min-width: 1200px) {
+    
+
+    .board{
+        width: 92rem;
+        height: 50rem;
+        flex-direction: row;
+        justify-content: space-around;
+        .faq{
+            h1{
+                text-align: left;
+            }
+            max-width: 35rem;
+            min-height: 36.1rem;
+            .question{
+                font-size: 1.4rem;
+            }
+            .question:hover{
+                color: var(--reddish-hover);
+            }
+        }
+    }
+    .images{
+        bottom: 0;
+        left: -11rem;
+        *{
+            width: 47.2rem;
+            height: 35.9rem;
+        }
+        .img-1{
+            background-image: url("images/illustration-box-desktop.svg");
+            left:-17rem;
+        }
+        .img-2{
+            background-image: url("images/illustration-woman-online-desktop.svg");
+        }
+    }
+
 }
