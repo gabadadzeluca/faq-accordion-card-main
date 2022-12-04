@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // display the answer of a selected question
 function display(){
     faq.forEach(element=>{
+        // reset font weight
+        element.firstElementChild.style.fontWeight = 'var(--normal)';
         if(element != this){
             element.lastElementChild.style.display = 'none';
             // arrow element
@@ -32,6 +34,7 @@ function display(){
     }else{
         this.classList.toggle('open');
         content.style.display = 'block';
+        this.firstElementChild.style.fontWeight = 'var(--bold)';
         arrow.classList.remove('arrow-down');
         arrow.classList.add('arrow-up');
     }
