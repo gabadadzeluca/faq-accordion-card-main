@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         question.classList.add('question');
         answer.classList.add('answer');
         element.addEventListener('click', display);
-        console.log(element);
     })  
 });
 
@@ -18,15 +17,23 @@ function display(){
     faq.forEach(element=>{
         if(element != this){
             element.lastElementChild.style.display = 'none';
+            // arrow element
+            element.firstElementChild.firstElementChild.classList.remove('arrow-up');
+            element.firstElementChild.firstElementChild.classList.add('arrow-down');
         }
     })
     let content = this.lastElementChild;
-    console.log(content);
+    let arrow = this.firstElementChild.firstElementChild;
+
     if(content.style.display === 'block'){
         content.style.display = 'none';
+        arrow.classList.remove('arrow-up');
+        arrow.classList.add('arrow-down');
     }else{
         this.classList.toggle('open');
         content.style.display = 'block';
+        arrow.classList.remove('arrow-down');
+        arrow.classList.add('arrow-up');
     }
 }
 
@@ -36,3 +43,4 @@ function addArrow(element){
     arrow.classList.add('arrow-down');
     element.firstElementChild.appendChild(arrow);
 }
+
